@@ -17,18 +17,22 @@ export SPROMPT="Correct %{$fg[red]%R$reset_color%} to %{$fg[green]%r$reset_color
 bindkey -v
 
 # Load aliases
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 . ~/.config/aliasrc
 
 # Set prompt
 autoload -Uz vcs_info # enable vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats ' %F{34}[%b]%f' # (main)
+zstyle ':vcs_info:*' formats ' %F{34}%b%f' # [main]
 
 precmd () { vcs_info } # always load before displaying the prompt
 
 NEWLINE=$'\n'
-PS1='%F{14}%/%f %F{27}{%*}%f${vcs_info_msg_0_} %F{118}(%?)%f${NEWLINE}%F{190}>%f '
+PS1='%F{14}%~%f %F{27}{%*}%f${vcs_info_msg_0_} %F{118}(%?)%f${NEWLINE}%F{190}>%f '
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -38,6 +42,12 @@ HISTFILE=~/.zsh_history
 # Use modern completion system
 autoload -Uz compinit
 compinit
+
+# Fuck
+eval $(thefuck --alias)
+
+# Autojump
+[[ -s /home/codeer/.autojump/etc/profile.d/autojump.sh ]] && source /home/codeer/.autojump/etc/profile.d/autojump.sh
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate

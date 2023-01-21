@@ -45,6 +45,9 @@
   (define-key evil-normal-state-map (kbd "<SPC>x2") 'split-window-below)
   (define-key evil-normal-state-map (kbd "<SPC>x3") 'split-window-right)
 
+  (define-key evil-normal-state-map (kbd "<SPC>x50") 'delete-frame)
+  (define-key evil-normal-state-map (kbd "<SPC>x52") 'make-frame-command)
+
 (define-key evil-motion-state-map (kbd "<SPC>") nil)
   (define-key evil-motion-state-map (kbd "<SPC>xk") 'kill-buffer)
   (define-key evil-motion-state-map (kbd "<SPC>xc") 'save-buffers-kill-terminal)
@@ -54,6 +57,9 @@
   (define-key evil-motion-state-map (kbd "<SPC>x1") 'delete-other-windows)
   (define-key evil-motion-state-map (kbd "<SPC>x2") 'split-window-below)
   (define-key evil-motion-state-map (kbd "<SPC>x3") 'split-window-right)
+
+  (define-key evil-motion-state-map (kbd "<SPC>x50") 'delete-frame)
+  (define-key evil-motion-state-map (kbd "<SPC>x52") 'make-frame-command)
 
 (require 'dired)
   (define-key dired-mode-map (kbd "<SPC>") nil)

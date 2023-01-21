@@ -56,4 +56,14 @@ let g:neovide_cursor_trail_length=0.8
 let g:neovide_cursor_antialiasing=v:false
 let g:neovide_cursor_vfx_mode = "railgun"
 
-colorscheme default
+" Plugins
+call plug#begin()
+
+Plug 'ayu-theme/ayu-vim'
+
+" Initialize plugin system
+call plug#end()
+
+" Color scheme
+let ayucolor="dark"
+colorscheme ayu
