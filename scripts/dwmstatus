@@ -1,0 +1,2 @@
+#! /bin/bash
+xsetroot -name "$( date +"%r, %D" ) | $( echo "BAT: $( cat /sys/class/power_supply/BAT0/capacity )%" )"

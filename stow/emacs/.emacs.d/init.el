@@ -21,6 +21,16 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+; My package list
+(setq package-list '(
+		     company evil gruvbox-theme general))
+
+; Install packages that aren't installed
+(unless package-archive-contents (package-refresh-contents))
+(dolist (package package-list)
+  (unless
+      (package-installed-p package) (package-install package)))
+
 ; Load gruvbox theme
 (load-theme 'gruvbox-dark-soft)
 
