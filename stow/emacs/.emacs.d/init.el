@@ -41,56 +41,61 @@
 ; Fix screen issue
 (setq frame-resize-pixelwise t)
 
-; My keymap
-(define-key evil-normal-state-map (kbd "<SPC>") nil)
-  (define-key evil-normal-state-map (kbd "<SPC>xf") 'find-file)
-  (define-key evil-normal-state-map (kbd "<SPC>xs") 'save-buffer)
-  (define-key evil-normal-state-map (kbd "<SPC>xk") 'kill-buffer)
-  (define-key evil-normal-state-map (kbd "<SPC>xe") 'eval-last-sexp)
-  (define-key evil-normal-state-map (kbd "<SPC>xc") 'save-buffers-kill-terminal)
-
-  (define-key evil-normal-state-map (kbd "<SPC>xo") 'other-window)
-  (define-key evil-normal-state-map (kbd "<SPC>x0") 'delete-window)
-  (define-key evil-normal-state-map (kbd "<SPC>x1") 'delete-other-windows)
-  (define-key evil-normal-state-map (kbd "<SPC>x2") 'split-window-below)
-  (define-key evil-normal-state-map (kbd "<SPC>x3") 'split-window-right)
-
-  (define-key evil-normal-state-map (kbd "<SPC>x50") 'delete-frame)
-  (define-key evil-normal-state-map (kbd "<SPC>x52") 'make-frame-command)
-
-(define-key evil-motion-state-map (kbd "<SPC>") nil)
-  (define-key evil-motion-state-map (kbd "<SPC>xk") 'kill-buffer)
-  (define-key evil-motion-state-map (kbd "<SPC>xc") 'save-buffers-kill-terminal)
-
-  (define-key evil-motion-state-map (kbd "<SPC>xo") 'other-window)
-  (define-key evil-motion-state-map (kbd "<SPC>x0") 'delete-window)
-  (define-key evil-motion-state-map (kbd "<SPC>x1") 'delete-other-windows)
-  (define-key evil-motion-state-map (kbd "<SPC>x2") 'split-window-below)
-  (define-key evil-motion-state-map (kbd "<SPC>x3") 'split-window-right)
-
-  (define-key evil-motion-state-map (kbd "<SPC>x50") 'delete-frame)
-  (define-key evil-motion-state-map (kbd "<SPC>x52") 'make-frame-command)
-
-(require 'dired)
-  (define-key dired-mode-map (kbd "<SPC>") nil)
-    (define-key dired-mode-map (kbd "<SPC>xk") 'kill-buffer)
-    (define-key dired-mode-map (kbd "<SPC>xf") 'find-file)
-    (define-key dired-mode-map (kbd "<SPC>xc") 'save-buffers-kill-terminal)
-
-    (define-key dired-mode-map (kbd "<SPC>xo") 'other-window)
-    (define-key dired-mode-map (kbd "<SPC>x0") 'delete-window)
-    (define-key dired-mode-map (kbd "<SPC>x1") 'delete-other-windows)
-    (define-key dired-mode-map (kbd "<SPC>x2") 'split-window-below)
-    (define-key dired-mode-map (kbd "<SPC>x3") 'split-window-right)
-
+; Company
 (require 'company)
-  (define-key company-active-map (kbd "C-j") 'company-select-next)
-  (define-key company-active-map (kbd "C-k") 'company-select-previous)
-
-; Enable company-mode
 (add-hook 'after-init-hook 'global-company-mode)
+
 ; QOL for company
 (setq company-minimum-prefix-length 1
       company-idle-delay 0.2
       company-selection-wrap-around t)
 (company-tng-configure-default)
+
+; My keymap
+(require 'general)
+
+(general-create-definer my-leader-def
+  :prefix "<SPC>")
+
+(my-leader-def
+ :keymaps '(evil-normal-state-map evil-motion-state-map)
+  ""      nil
+  "xf"    'find-file
+  "xs"    'save-buffer
+  "xk"    'kill-buffer
+  "xe"    'eval-last-sexp
+  "xc"    'save-buffers-kill-terminal
+
+  "xo"    'other-window
+  "x0"    'delete-window
+  "x1"    'delete-other-windows
+  "x2"    'split-window-below
+  "x3"    'split-window-right
+
+  "h?"    'help-for-help
+  "hk"    'describe-key
+  "hv"    'describe-variable
+  "hf"    'describe-function
+  "hb"    'describe-bindings
+  "hm"    'describe-mode
+
+  "x50"   'delete-frame
+  "x52"   'make-frame-command)
+
+(general-define-key
+ :keymaps 'company-active-map
+  "C-j" 'company-select-next
+  "C-k" 'company-select-previous)
+
+(general-define-key 
+ :keymaps 'dired-mode-map
+  "<SPC>" nil
+  "<SPC>xk" 'kill-buffer
+  "<SPC>xo" 'other-window
+  "<SPC>x0" 'delete-window
+  "<SPC>x1" 'delete-other-windows
+  "<SPC>x2" 'split-window-below
+  "<SPC>x3" 'split-window-right
+
+  "<SPC>x50" 'delete-frame
+  "<SPC>x52" 'make-frame-command)
