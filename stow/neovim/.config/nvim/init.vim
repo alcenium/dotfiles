@@ -49,7 +49,6 @@ nnoremap <Leader>L :last<CR>
 " Neovide configs
 set guifont=FiraMono\ Nerd\ Font:h7
 let g:neovide_refresh_rate=140
-let g:neovide_transparency=0.9
 let g:neovide_remember_window_size = v:true
 let g:neovide_cursor_animation_length=0.08
 let g:neovide_cursor_trail_length=0.8
