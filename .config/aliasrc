@@ -1,0 +1,11 @@
+# Aliases
+alias \
+	la='ls -A --color=auto' \
+	ll='ls -alhF --color=auto' \
+\
+	bat='batcat' \
+	nvide='neovide --maximized' \
+	emacs='emacs -mm' \
+	doom='/home/alcen/.emacs.d/doom-emacs/bin/doom'
+\
+	awesomecf='neovide ~/.config/awesome/rc.lua && awesome -k ~/.config/awesome/rc.lua && cp ~/.config/awesome/rc.lua ~/.dotfiles/.config/awesome/rc.lua' \

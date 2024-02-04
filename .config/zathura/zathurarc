@@ -1,0 +1,6 @@
+set page-padding 1
+set page-per-row 2
+set selection-clipboard clipboard
+
+map <C-l> feedkeys ":blist <Tab>"
+map <C-m> feedkeys ":bmark"
